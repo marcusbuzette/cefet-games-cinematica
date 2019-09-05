@@ -29,6 +29,15 @@ public class Fugir extends AlgoritmoMovimentacao {
         // super.alvo já contém a posição do alvo
         // agente (parâmetro) é a pose do agente que estamos guiando
         // ...
+        
+        output.velocidade.x = (this.alvo.getObjetivo().x- agente.posicao.x);
+        output.velocidade.y = (this.alvo.getObjetivo().y- agente.posicao.y );
+        output.velocidade = output.velocidade.nor();
+        output.velocidade.x *= - maxVelocidade;
+        output.velocidade.y *= - maxVelocidade;
+        
+        agente.olharNaDirecaoDaVelocidade(output.velocidade);
+        
         return output;
     }
 
